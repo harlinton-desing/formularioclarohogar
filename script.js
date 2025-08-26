@@ -463,52 +463,75 @@ function correctData() {
     document.getElementById('summaryModal').style.display = 'none';
 }
 
-// Enviar a WhatsApp - VERSIÓN CORREGIDA SIN EMOJIS PROBLEMÁTICOS
+// FUNCIÓN CORREGIDA: Enviar a WhatsApp CON EMOJIS FUNCIONANDO
 function sendToWhatsApp() {
     const phoneNumber = '573125198465';
     
-    // Crear mensaje simple sin emojis problemáticos
-    let message = '*NUEVO REGISTRO DE CLIENTE*\n\n';
-    message += `Fecha de registro: ${formData.fechaEnvio}\n\n`;
-    message += '*INFORMACION PERSONAL:*\n';
-    message += `Nombre: ${formData.nombreCompleto}\n`;
-    message += `Documento: ${formData.tipoDocumento} ${formData.numeroDocumento}\n`;
-    message += `Fecha Nacimiento: ${formData.fechaNacimiento}\n`;
-    message += `Fecha Expedicion: ${formData.fechaExpedicion}\n`;
-    message += `Email: ${formData.correo}\n`;
-    message += `Celular: ${formData.celular}\n\n`;
+    // Crear emojis usando códigos Unicode para garantizar compatibilidad
+    const gamepadEmoji = String.fromCodePoint(0x1F3AE);
+    const personEmoji = String.fromCodePoint(0x1F464);
+    const memoEmoji = String.fromCodePoint(0x1F4DD);
+    const documentEmoji = String.fromCodePoint(0x1F4C4);
+    const birthdayEmoji = String.fromCodePoint(0x1F382);
+    const calendarEmoji = String.fromCodePoint(0x1F4C5);
+    const emailEmoji = String.fromCodePoint(0x1F4E7);
+    const phoneEmoji = String.fromCodePoint(0x1F4F1);
+    const houseEmoji = String.fromCodePoint(0x1F3E0);
+    const buildingEmoji = String.fromCodePoint(0x1F3E2);
+    const cityEmoji = String.fromCodePoint(0x1F3D8);
+    const numbersEmoji = String.fromCodePoint(0x1F522);
+    const constructionEmoji = String.fromCodePoint(0x1F3D7);
+    const doorEmoji = String.fromCodePoint(0x1F6AA);
+    const mapEmoji = String.fromCodePoint(0x1F5FA);
+    const chartEmoji = String.fromCodePoint(0x1F4CA);
+    const packageEmoji = String.fromCodePoint(0x1F4E6);
+    const moneyEmoji = String.fromCodePoint(0x1F4B0);
+    const tvEmoji = String.fromCodePoint(0x1F4FA);
+    const satelliteEmoji = String.fromCodePoint(0x1F4E1);
+    const clockEmoji = String.fromCodePoint(0x23F0);
+    const rocketEmoji = String.fromCodePoint(0x1F680);
+    const checkEmoji = String.fromCodePoint(0x2705);
     
-    message += '*INFORMACION DE VIVIENDA:*\n';
-    message += `Direccion: ${formData.direccion}\n`;
-    message += `Tipo: ${formData.tipoVivienda.toUpperCase()}\n`;
+    let message = `${gamepadEmoji} *NUEVO REGISTRO DE CLIENTE* ${gamepadEmoji}\n\n`;
+    message += `${clockEmoji} Fecha de registro: ${formData.fechaEnvio}\n\n`;
+    message += `${personEmoji} *INFORMACION PERSONAL:*\n`;
+    message += `${memoEmoji} Nombre: ${formData.nombreCompleto}\n`;
+    message += `${documentEmoji} Documento: ${formData.tipoDocumento} ${formData.numeroDocumento}\n`;
+    message += `${birthdayEmoji} Fecha Nacimiento: ${formData.fechaNacimiento}\n`;
+    message += `${calendarEmoji} Fecha Expedicion: ${formData.fechaExpedicion}\n`;
+    message += `${emailEmoji} Email: ${formData.correo}\n`;
+    message += `${phoneEmoji} Celular: ${formData.celular}\n\n`;
+    
+    message += `${houseEmoji} *INFORMACION DE VIVIENDA:*\n`;
+    message += `${mapEmoji} Direccion: ${formData.direccion}\n`;
+    message += `${buildingEmoji} Tipo: ${formData.tipoVivienda.toUpperCase()}\n`;
     
     if (formData.piso) {
-        message += `Piso: ${formData.piso}\n`;
+        message += `${numbersEmoji} Piso: ${formData.piso}\n`;
     }
     if (formData.nombreConjunto) {
-        message += `Conjunto: ${formData.nombreConjunto}\n`;
+        message += `${cityEmoji} Conjunto: ${formData.nombreConjunto}\n`;
     }
     if (formData.torreBloque) {
-        message += `Torre/Bloque: ${formData.torreBloque}\n`;
+        message += `${constructionEmoji} Torre/Bloque: ${formData.torreBloque}\n`;
     }
     if (formData.aptoCasa) {
-        message += `Apto/Casa: ${formData.aptoCasa}\n`;
+        message += `${doorEmoji} Apto/Casa: ${formData.aptoCasa}\n`;
     }
     
-    message += `Ubicacion: ${formData.departamento} - ${formData.municipio}\n`;
-    message += `Barrio: ${formData.barrio}\n`;
-    message += `Estrato: ${formData.estrato}\n\n`;
+    message += `${mapEmoji} Ubicacion: ${formData.departamento} - ${formData.municipio}\n`;
+    message += `${cityEmoji} Barrio: ${formData.barrio}\n`;
+    message += `${chartEmoji} Estrato: ${formData.estrato}\n\n`;
     
-    message += '*PLAN SELECCIONADO:*\n';
-    message += `Plan: ${formData.plan}\n`;
-    message += `Valor: ${formData.valorPlan}\n`;
-    message += `Aplicaciones: ${formData.aplicaciones.join(', ')}\n`;
-    message += `Equipos: ${formData.equipos}\n\n`;
+    message += `${packageEmoji} *PLAN SELECCIONADO:*\n`;
+    message += `${packageEmoji} Plan: ${formData.plan}\n`;
+    message += `${moneyEmoji} Valor: ${formData.valorPlan}\n`;
+    message += `${tvEmoji} Aplicaciones: ${formData.aplicaciones.join(', ')}\n`;
+    message += `${satelliteEmoji} Equipos: ${formData.equipos}\n\n`;
     
-   
-    message += '*LISTO PARA ACTIVAR EL SERVICIO!*\n';
-    message += 'Datos guardados en sistema\n';
-    message += 'Bienvenido a la experiencia CLARO!';
+    message += `${rocketEmoji} *LISTO PARA ACTIVAR EL SERVICIO!* ${rocketEmoji}\n`;
+    message += `${checkEmoji} Datos guardados en sistema\n`;
+    message += `${gamepadEmoji} Bienvenido a la experiencia CLARO! ${gamepadEmoji}`;
     
     console.log('Mensaje para WhatsApp:', message);
     
