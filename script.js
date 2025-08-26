@@ -469,11 +469,12 @@ function sendToWhatsApp() {
     
     // Crear mensaje simple sin emojis problemáticos
     let message = '*NUEVO REGISTRO DE CLIENTE*\n\n';
-    
+    message += `Fecha de registro: ${formData.fechaEnvio}\n\n`;
     message += '*INFORMACION PERSONAL:*\n';
     message += `Nombre: ${formData.nombreCompleto}\n`;
     message += `Documento: ${formData.tipoDocumento} ${formData.numeroDocumento}\n`;
     message += `Fecha Nacimiento: ${formData.fechaNacimiento}\n`;
+    message += `Fecha Expedicion: ${formData.fechaExpedicion}\n`;
     message += `Email: ${formData.correo}\n`;
     message += `Celular: ${formData.celular}\n\n`;
     
@@ -504,10 +505,10 @@ function sendToWhatsApp() {
     message += `Aplicaciones: ${formData.aplicaciones.join(', ')}\n`;
     message += `Equipos: ${formData.equipos}\n\n`;
     
-    message += `Fecha de registro: ${formData.fechaEnvio}\n\n`;
+   
     message += '*LISTO PARA ACTIVAR EL SERVICIO!*\n';
     message += 'Datos guardados en sistema\n';
-    message += 'Bienvenido a la experiencia gaming!';
+    message += 'Bienvenido a la experiencia CLARO!';
     
     console.log('Mensaje para WhatsApp:', message);
     
